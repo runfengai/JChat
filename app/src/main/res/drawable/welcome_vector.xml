@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_welcome">
+    <!--<target-->
+        <!--android:name="rotateGroup"-->
+        <!--android:animation="@animator/rotate_animator" />-->
+    <!--<target-->
+    <!--android:name="triangle1"-->
+    <!--android:animation="@animator/path_change" />-->
+    <target
+        android:name="chatgroup"
+        android:animation="@animator/rotate_animator" />
+
+    <target
+        android:name="chatpath"
+        android:animation="@animator/welcome_change" />
+</animated-vector>
