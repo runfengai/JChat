@@ -28,7 +28,7 @@ public class WelcomeActivity extends BaseActivity {
 
         pathView.getPathAnimator().
                 delay(100).
-                duration(1500).
+                duration(1000).
                 interpolator(new AccelerateDecelerateInterpolator()).
                 start();
         new Handler().postDelayed(new Runnable() {
