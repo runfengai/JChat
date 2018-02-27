@@ -27,7 +27,7 @@ public class App extends Application {
         list.remove(act);
     }
 
-    public void exit() {
+    public static void exit() {
         for (Activity act : list) {
             act.finish();
         }

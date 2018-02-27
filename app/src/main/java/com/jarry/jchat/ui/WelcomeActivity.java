@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
 import com.eftimoff.androipathview.PathView;
+import com.jarry.jchat.App;
 import com.jarry.jchat.R;
 import com.jarry.jchat.databinding.ActivityWelcomeBinding;
 import com.jarry.jchat.model.Welcome;
@@ -43,6 +44,6 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
+        App.exit();
     }
 }
