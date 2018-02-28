@@ -12,11 +12,17 @@ import java.util.List;
  */
 
 public class App extends Application {
+    private static App instance = null;
     private static List<Activity> list = new ArrayList<>();
+
+    public static App getInstance() {
+        return instance;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
     }
 
     public static void addAct(Activity act) {
