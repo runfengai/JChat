@@ -42,4 +42,5 @@ dependencies {
     compile 'com.eftimoff:android-pathview:1.0.8@aar'
     compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
+    compile 'com.elvishew:xlog:1.4.0'
 }
