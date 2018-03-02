@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.app.Application;
 import android.widget.LinearLayout;
 
+import com.elvishew.xlog.LogConfiguration;
+import com.elvishew.xlog.LogLevel;
+import com.elvishew.xlog.XLog;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +27,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        XLog.init(LogLevel.ALL);
     }
 
     public static void addAct(Activity act) {

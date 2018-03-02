@@ -27,7 +27,10 @@
         </activity>
         <activity
             android:name=".ui.LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".ui.IndexActivity"
+            android:theme="@style/theme_no_title"></activity>
     </application>
 
 </manifest>

@@ -14,4 +14,21 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!--引导页-->
+    <string name="index_start">START MESSAGING</string>
+    <string name="index_1_title">Telegram</string>
+    <string name="index_1_desc">The world\'s fastest messaging app.\nIt is free and secure.</string>
+    <string name="index_2_title">Fast</string>
+    <string name="index_2_desc">Telegram delivers messages faster than\nany other application.</string>
+    <string name="index_3_title">Free</string>
+    <string name="index_3_desc">Telegram is free forver.No ads.\n No subscription fees.</string>
+    <string name="index_4_title">Secure</string>
+    <string name="index_4_desc">Telegram keeps your message safe\nfrom hakers attacks.</string>
+    <string name="index_5_title">Powerful</string>
+    <string name="index_5_desc">Telegram has no limits on the size of\nyour media and chats.</string>
+    <string name="index_6_title">Cloud-Based</string>
+    <string name="index_6_desc">Telegram let you access your messages from multipule devices</string>
+    <string name="index_7_title">Private</string>
+    <string name="index_7_desc">Telegram message are heavily encrypted\nand can self-destruct.</string>
 </resources>

@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <!--引导页-->
+    <color name="index_start">#2da5e1</color>
+    <color name="index_start_p">#198cc6</color>
+    <color name="index_point_gray">#bbbbbb</color>
+    <color name="index_point_green">#2da6db</color>
 </resources>

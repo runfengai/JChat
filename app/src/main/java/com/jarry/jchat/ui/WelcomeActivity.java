@@ -35,7 +35,7 @@ public class WelcomeActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(self, LoginActivity.class));
+                startActivity(new Intent(self, IndexActivity.class));
                 finish();
             }
         }, 2000);
