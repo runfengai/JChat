@@ -8,4 +8,6 @@
     <color name="index_start_p">#198cc6</color>
     <color name="index_point_gray">#bbbbbb</color>
     <color name="index_point_green">#2da6db</color>
+    <!--侧边栏-->
+    <color name="nav_avater">#5085b1</color>
 </resources>

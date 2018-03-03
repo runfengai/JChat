@@ -31,4 +31,10 @@
     <string name="index_6_desc">Telegram let you access your messages from multipule devices</string>
     <string name="index_7_title">Private</string>
     <string name="index_7_desc">Telegram message are heavily encrypted\nand can self-destruct.</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

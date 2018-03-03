@@ -19,18 +19,24 @@
         <activity
             android:name=".ui.WelcomeActivity"
             android:theme="@style/theme_fullScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
             android:name=".ui.IndexActivity"
-            android:theme="@style/theme_no_title"></activity>
+            android:theme="@style/theme_no_title" />
+        <activity
+            android:name=".ui.NavigationDrawerActivity"
+            android:label="@string/title_activity_navigation_drawer"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
