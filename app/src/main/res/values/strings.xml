@@ -37,4 +37,12 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <!--登录-->
+    <string name="login_phone_head_hint">+86</string>
+    <string name="action_login_short">好啦</string>
+    <string name="action_login_phone">--- ---- ----</string>
+    <string name="action_login_ver_hint">We\'ve sent an SMS with an activation code to your phone</string>
+    <string name="action_login_ver">Code</string>
+    <string name="action_login_ver_call">We will call you in 1:54</string>
+    <string name="action_login_ver_wrong">Wrong number?</string>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#537da3</color>
+    <color name="colorPrimaryDark">#416281</color>
     <color name="colorAccent">#FF4081</color>
     <!--引导页-->
     <color name="index_start">#2da5e1</color>
@@ -10,4 +10,9 @@
     <color name="index_point_green">#2da6db</color>
     <!--侧边栏-->
     <color name="nav_avater">#5085b1</color>
+    <!--登录-->
+    <color name="login_line">#dcdcdc</color>
+    <color name="login_line_press">#34abed</color>
+    <color name="login_ver_wrong">#4b72a9</color>
+
 </resources>

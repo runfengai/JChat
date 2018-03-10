@@ -6,6 +6,7 @@ import android.view.View;
 import com.jarry.jchat.App;
 import com.jarry.jchat.R;
 import com.jarry.jchat.ui.LoginActivity;
+import com.jarry.jchat.ui.LoginSysActivity;
 
 /**
  * Created by Jarry on 2018/2/28.
@@ -16,7 +17,7 @@ public class Index {
     private String btn;
 
     public void onBtnClick(View view) {
-        Intent intent = new Intent(view.getContext(), LoginActivity.class);
+        Intent intent = new Intent(view.getContext(), LoginSysActivity.class);
         view.getContext().startActivity(intent);
     }
 
