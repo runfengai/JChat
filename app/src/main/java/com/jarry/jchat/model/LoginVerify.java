@@ -13,6 +13,7 @@ import com.jarry.jchat.ui.AccountValidatorUtil;
 
 public class LoginVerify {
     private String verification;
+    private String phone;
 
     /**
      * 按钮点击
@@ -32,6 +33,14 @@ public class LoginVerify {
 
     public String getVerification() {
         return verification;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public void setVerification(String verification) {
