@@ -7,8 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.jarry.jchat.ui.AccountValidatorUtil;
-import com.jarry.jchat.ui.LoginActivity;
-import com.jarry.jchat.ui.LoginVerificationActivity;
+import com.jarry.jchat.ui.login.LoginVerificationActivity;
 
 /**
  * 登录

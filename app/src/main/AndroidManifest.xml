@@ -38,7 +38,7 @@
 
         </activity>
         <activity android:name=".ui.LoginSysActivity"></activity>
-        <activity android:name=".ui.LoginVerificationActivity"></activity>
+        <activity android:name=".ui.login.LoginVerificationActivity"></activity>
     </application>
 
 </manifest>
