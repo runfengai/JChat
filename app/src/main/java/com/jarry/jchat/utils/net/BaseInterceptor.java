@@ -34,11 +34,11 @@ public class BaseInterceptor implements Interceptor {
                 builder.addHeader(headerKey, headers.get(headerKey)).build();
             }
         } else {//加载默认的header
-            builder.addHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8")
+            builder.addHeader("Content-Type", "application/json;charset=UTF-8")
                     .addHeader("Accept-Encoding", "gzip, deflate")
                     .addHeader("Connection", "keep-alive")
-                    .addHeader("Accept", "*/*")
-                    .addHeader("Cookie", "add cookies here")
+                    .addHeader("Accept", "text/html,*/*")
+                    .addHeader("Cookie", "")
                     .build();
         }
         return chain.proceed(builder.build());

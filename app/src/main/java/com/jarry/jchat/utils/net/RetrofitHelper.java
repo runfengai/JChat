@@ -25,7 +25,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
     private static RetrofitHelper instance = new RetrofitHelper();
-    public static final String BASE_URL = "";
     private static Retrofit mRetrofit;
     private static final int DeFAULT_TIME = 10;//网络请求超时时间
     private final long RETRY_TIMES = 1;//重订阅次数
@@ -49,7 +48,7 @@ public class RetrofitHelper {
 
                     OkHttpClient okHttpClient = builder.build();
                     mRetrofit = new Retrofit.Builder()
-                            .baseUrl(BASE_URL)
+                            .baseUrl(ApiService.BASE_URL)
                             .client(okHttpClient)
 
                             .addConverterFactory(GsonConverterFactory.create())
