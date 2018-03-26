@@ -49,8 +49,8 @@ public interface ApiService {
      * @param password
      * @return
      */
-    @GET("/login")
-    Observable<Response<ResponseBody>> login(@Query("phone") String userName, @Query("password") String password);
+    @POST("/login")
+    Observable<Response<ResponseBody>> login(@Query("userName") String userName, @Query("password") String password);
 
     @POST("/register")
     Observable<Response<ResponseBody>> register(@Query("phone") String userName, @Query("password") String password);

@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
+import com.elvishew.xlog.XLog;
 import com.jarry.jchat.ui.AccountValidatorUtil;
 import com.jarry.jchat.ui.login.LoginVerificationActivity;
 
@@ -34,6 +35,8 @@ public class Login extends BaseObservable {
         }
 
         Intent intent = new Intent(view.getContext(), LoginVerificationActivity.class);
+        XLog.d("========>" + phone);
+        intent.putExtra("userName", phone);
         view.getContext().startActivity(intent);
     }
 

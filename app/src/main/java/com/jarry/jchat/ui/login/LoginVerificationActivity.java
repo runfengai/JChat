@@ -1,11 +1,13 @@
 package com.jarry.jchat.ui.login;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.elvishew.xlog.XLog;
 import com.jarry.jchat.R;
 import com.jarry.jchat.base.BaseActivity;
 import com.jarry.jchat.databinding.ActivityLoginVerificationBinding;
@@ -25,8 +27,13 @@ public class LoginVerificationActivity extends BaseActivity<ActivityLoginVerific
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState) {
+        Intent intent = getIntent();
         LoginVerify loginVerify = new LoginVerify();
+        if (intent != null) {
+            loginVerify.setPhone(intent.getStringExtra("userName"));
+        }
         binding.setLoginVerify(loginVerify);
+
     }
 
     @Override
