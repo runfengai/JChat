@@ -1,6 +1,7 @@
 package com.jarry.jchat.base;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -85,5 +86,10 @@ public abstract class BaseActivity<DB extends ViewDataBinding, T extends BasePre
     @Override
     public void showToast(String msg) {
 
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 }

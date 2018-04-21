@@ -17,7 +17,7 @@ import com.jarry.jchat.ui.login.LoginVerificationActivity;
 
 public class Login extends BaseObservable {
     private String country;
-    private String phone = "18811730000";
+    private String phone = "18811730088";
 
     /**
      * 按钮点击

@@ -2,6 +2,8 @@
     <string name="app_name">JChat</string>
     <string name="title_activity_login">登录</string>
 
+    <string name="error_server">服务器繁忙</string>
+    <string name="error_null">暂无数据</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -31,7 +33,7 @@
     <string name="index_6_desc">Telegram let you access your messages from multipule devices</string>
     <string name="index_7_title">Private</string>
     <string name="index_7_desc">Telegram message are heavily encrypted\nand can self-destruct.</string>
-    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+    <string name="title_activity_navigation_drawer">Telegram</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -45,4 +47,5 @@
     <string name="action_login_ver">Code</string>
     <string name="action_login_ver_call">We will call you in 1:54</string>
     <string name="action_login_ver_wrong">Wrong number?</string>
+
 </resources>

@@ -4,5 +4,5 @@ package com.jarry.jchat.base;
  * Created by Jarry on 2018/3/25.
  */
 
-public class BaseModel {
+public interface BaseModel {
 }

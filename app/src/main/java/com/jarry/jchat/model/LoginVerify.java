@@ -12,7 +12,7 @@ import com.jarry.jchat.ui.AccountValidatorUtil;
  */
 
 public class LoginVerify {
-    private String verification;
+    private String verification = "123456";
     private String phone;
 
     /**

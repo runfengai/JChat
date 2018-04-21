@@ -1,5 +1,8 @@
 package com.jarry.jchat.utils.net;
 
+import com.jarry.jchat.model.ResponseInfo;
+import com.jarry.jchat.model.UserInfo;
+
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -16,7 +19,8 @@ import retrofit2.http.QueryMap;
  */
 
 public interface ApiService {
-    public static final String BASE_URL = "http://192.168.10.197:8088/";
+    //    public static final String BASE_URL = "http://192.168.10.197:8088/";//local
+    public static final String BASE_URL = "http://95.163.207.33:8088/";//net
 
     /**
      * 普通get请求
@@ -50,10 +54,10 @@ public interface ApiService {
      * @return
      */
     @POST("/login")
-    Observable<Response<ResponseBody>> login(@Query("userName") String userName, @Query("password") String password);
+    Observable<ResponseInfo<UserInfo>> login(@Query("phone") String userName, @Query("password") String password);
 
     @POST("/register")
-    Observable<Response<ResponseBody>> register(@Query("phone") String userName, @Query("password") String password);
+    Observable<Response<ResponseBody>> register(@Query("userName") String userName, @Query("password") String password);
     /**
      * =============================================================================================
      *登录相关
