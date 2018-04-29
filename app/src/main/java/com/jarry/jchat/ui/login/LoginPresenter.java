@@ -1,17 +1,21 @@
 package com.jarry.jchat.ui.login;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 
 import com.elvishew.xlog.XLog;
 import com.jarry.jchat.R;
 import com.jarry.jchat.base.BasePresenter;
+import com.jarry.jchat.interfaces.LoginSuccessEvent;
 import com.jarry.jchat.model.ResponseInfo;
 import com.jarry.jchat.model.UserInfo;
 import com.jarry.jchat.ui.NavigationDrawerActivity;
 import com.jarry.jchat.utils.SpUtils;
 import com.jarry.jchat.utils.net.ApiService;
 import com.jarry.jchat.utils.net.RetrofitHelper;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 
@@ -54,6 +58,10 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
                         SpUtils.saveString(getView().getContext(), "userInfo", SpUtils.obj2String(userInfo));
                         Intent intent = new Intent(getView().getContext(), NavigationDrawerActivity.class);
                         getView().getContext().startActivity(intent);
+                        ((Activity) getView().getContext()).finish();
+                        //事件通知
+                        EventBus.getDefault().post(new LoginSuccessEvent(LoginSuccessEvent.SUCCESS));
+
                     } else {
                         getView().showToast(getView().getContext().getString(R.string.error_null));
                     }

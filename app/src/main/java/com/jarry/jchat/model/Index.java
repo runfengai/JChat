@@ -1,5 +1,6 @@
 package com.jarry.jchat.model;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
@@ -19,6 +20,7 @@ public class Index {
     public void onBtnClick(View view) {
         Intent intent = new Intent(view.getContext(), LoginSysActivity.class);
         view.getContext().startActivity(intent);
+        ((Activity) view.getContext()).finish();
     }
 
     public Index() {
