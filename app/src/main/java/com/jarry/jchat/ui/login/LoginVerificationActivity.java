@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.elvishew.xlog.XLog;
 import com.jarry.jchat.R;
 import com.jarry.jchat.base.BaseActivity;
 import com.jarry.jchat.databinding.ActivityLoginVerificationBinding;
@@ -18,7 +17,7 @@ import com.jarry.jchat.model.UserInfo;
  * 登录验证码
  */
 public class LoginVerificationActivity extends BaseActivity<ActivityLoginVerificationBinding, LoginPresenter> implements LoginContract.View {
-//    private LoginPresenter loginPresenter;
+//    private UserInfoPresenter loginPresenter;
 
     @Override
     protected int setLayoutId() {

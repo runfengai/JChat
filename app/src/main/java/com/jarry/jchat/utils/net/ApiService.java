@@ -58,9 +58,13 @@ public interface ApiService {
 
     @POST("/register")
     Observable<Response<ResponseBody>> register(@Query("userName") String userName, @Query("password") String password);
+
     /**
      * =============================================================================================
-     *登录相关
+     * 登录相关
      * ========================END==================================================================
      */
+    @POST("/user")
+    Observable<ResponseInfo<UserInfo>> userInfo(@Query("userId") String userId);
+
 }
