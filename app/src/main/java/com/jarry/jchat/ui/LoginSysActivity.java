@@ -28,6 +28,7 @@ public class LoginSysActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login_sys);
         Login login = new Login();
         binding.setLogin(login);
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -62,7 +63,6 @@ public class LoginSysActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
     }
 
     @Override
