@@ -1,17 +1,24 @@
 package com.jarry.jchat.ui.user;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import com.jarry.jchat.R;
 import com.jarry.jchat.base.BaseActivity;
 import com.jarry.jchat.databinding.ActivityLoginVerificationBinding;
 import com.jarry.jchat.databinding.ActivityUserInfoBinding;
+import com.jarry.jchat.model.LoginVerify;
+import com.jarry.jchat.model.UserInfo;
 import com.jarry.jchat.ui.login.LoginContract;
 import com.jarry.jchat.ui.login.LoginPresenter;
 
 public class UserInfoActivity extends BaseActivity<ActivityUserInfoBinding, UserInfoPresenter> implements UserInfoContract.View {
+    public static final String EXTRA_USER_ID = "extra_user_id";
+    UserInfo userInfoModel = new UserInfo();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         binding = DataBindingUtil.setContentView(this, setLayoutId());
@@ -25,7 +32,13 @@ public class UserInfoActivity extends BaseActivity<ActivityUserInfoBinding, User
 
     @Override
     protected void initData(@Nullable Bundle savedInstanceState) {
-
+        Intent intent = getIntent();
+        if (intent != null) {
+            userInfoModel.setUserId(intent.getStringExtra(EXTRA_USER_ID));
+        }
+        //TODO 假数据
+        userInfoModel.setUserId("1234");
+        binding.setUserInfo(userInfoModel);
     }
 
     @Override
@@ -40,12 +53,15 @@ public class UserInfoActivity extends BaseActivity<ActivityUserInfoBinding, User
 
     @Override
     protected void loadData() {
-
+        String userId = userInfoModel.getUserId();
+        if (!TextUtils.isEmpty(userId)) {
+            mPresenter.loadData(userId);
+        }
     }
 
     @Override
     protected UserInfoPresenter createPresenter() {
-        return null;
+        return new UserInfoPresenter(userInfoModel);
     }
 
 

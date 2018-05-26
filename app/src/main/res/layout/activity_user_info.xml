@@ -19,12 +19,12 @@
         android:paddingRight="@dimen/login_line">
 
         <TextView
-            android:id="@+id/tv_country"
+            android:id="@+id/tv_userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="20dp"
-            android:text="个人信息"
+            android:text="姓名"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 

@@ -62,6 +62,10 @@ public class RetrofitHelper {
         return instance;
     }
 
+    public ApiService getApiService() {
+        return apiService == null ? create() : apiService;
+    }
+
     public ApiService create() {
         return apiService = mRetrofit.create(ApiService.class);
     }

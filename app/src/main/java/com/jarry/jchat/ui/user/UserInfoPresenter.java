@@ -1,6 +1,13 @@
 package com.jarry.jchat.ui.user;
 
+import com.elvishew.xlog.XLog;
+import com.jarry.jchat.R;
 import com.jarry.jchat.base.BasePresenter;
+import com.jarry.jchat.model.ResponseInfo;
+import com.jarry.jchat.model.UserInfo;
+
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 /**
  * 接口完事再回来搞
@@ -8,9 +15,51 @@ import com.jarry.jchat.base.BasePresenter;
  */
 
 public class UserInfoPresenter extends BasePresenter<UserInfoContract.View> implements UserInfoContract.Presenter {
+    UserInfo userInfoModel;
+
+    public UserInfoPresenter(UserInfo userInfo) {
+        this.userInfoModel = userInfo;
+    }
+
     @Override
     public void loadData(String userId) {
+        new UserInfoModel().getData(userId, new Observer<ResponseInfo<UserInfo>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                XLog.d("====onSubscribe=====");
+            }
 
+            @Override
+            public void onNext(ResponseInfo<UserInfo> userInfoResponseInfo) {
+                XLog.d("====onNext=====");
+                if (userInfoResponseInfo == null) {
+                    getView().showToast(getView().getContext().getString(R.string.error_server));
+                    return;
+                }
+                if (userInfoResponseInfo.isSuccess()) {
+                    UserInfo userInfo = userInfoResponseInfo.getData();
+                    if (userInfo != null) {
+                        //开始渲染界面
+                        userInfoModel.setAvatar(userInfo.getAvatar());
+                        userInfoModel.setGender(userInfo.getGender());
+                        userInfoModel.setUserName(userInfo.getUserName());
+                        userInfoModel.setPhone(userInfo.getPhone());
+                        userInfoModel.setUserId(userInfo.getUserId());
+                    }
+
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                XLog.d("====onError=====",e);
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
     }
     /**
      *
@@ -33,9 +82,9 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.View> impl
 //                }
 //                if (responseInfo.isSuccess()) {
 //                    //登录成功跳转页面
-//                    UserInfo userInfo = responseInfo.getData();
-//                    if (userInfo != null) {//保存到sp中
-//                        SpUtils.saveString(getView().getContext(), "userInfo", SpUtils.obj2String(userInfo));
+//                    UserInfo userInfoModel = responseInfo.getData();
+//                    if (userInfoModel != null) {//保存到sp中
+//                        SpUtils.saveString(getView().getContext(), "userInfoModel", SpUtils.obj2String(userInfoModel));
 //                        Intent intent = new Intent(getView().getContext(), NavigationDrawerActivity.class);
 //                        getView().getContext().startActivity(intent);
 //                        ((Activity) getView().getContext()).finish();

@@ -19,7 +19,7 @@ import retrofit2.http.QueryMap;
  */
 
 public interface ApiService {
-    //    public static final String BASE_URL = "http://192.168.10.197:8088/";//local
+//        public static final String BASE_URL = "http://192.168.10.197:8088/";//local
     public static final String BASE_URL = "http://95.163.207.33:8088/";//net
 
     /**
@@ -53,10 +53,10 @@ public interface ApiService {
      * @param password
      * @return
      */
-    @POST("/login")
+    @POST("/user/login")
     Observable<ResponseInfo<UserInfo>> login(@Query("phone") String userName, @Query("password") String password);
 
-    @POST("/register")
+    @POST("/user/register")
     Observable<Response<ResponseBody>> register(@Query("userName") String userName, @Query("password") String password);
 
     /**
@@ -64,7 +64,7 @@ public interface ApiService {
      * 登录相关
      * ========================END==================================================================
      */
-    @POST("/user")
+    @POST("/user/info")
     Observable<ResponseInfo<UserInfo>> userInfo(@Query("userId") String userId);
 
 }
