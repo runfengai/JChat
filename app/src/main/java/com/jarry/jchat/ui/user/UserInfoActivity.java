@@ -5,6 +5,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.jarry.jchat.R;
 import com.jarry.jchat.base.BaseActivity;
@@ -55,14 +57,34 @@ public class UserInfoActivity extends BaseActivity<ActivityUserInfoBinding, User
     protected void loadData() {
         String userId = userInfoModel.getUserId();
         if (!TextUtils.isEmpty(userId)) {
-            mPresenter.loadData(userId);
+            mPresenter.loadData(userId, userInfoModel);
         }
     }
 
     @Override
     protected UserInfoPresenter createPresenter() {
-        return new UserInfoPresenter(userInfoModel);
+        return new UserInfoPresenter();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_user_info, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.share) {
+            //
+//            mPresenter.attemptLogin(binding.getLoginVerify().getPhone(), binding.getLoginVerify().getVerification());
+            return true;
+        } else if (id == R.id.shortcut) {
+            //点击登录
+//            mPresenter.attemptLogin(binding.getLoginVerify().getPhone(), binding.getLoginVerify().getVerification());
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

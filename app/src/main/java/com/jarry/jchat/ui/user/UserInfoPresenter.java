@@ -10,19 +10,16 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 /**
- * 接口完事再回来搞
  * Created by Jarry on 2018/3/25.
  */
 
 public class UserInfoPresenter extends BasePresenter<UserInfoContract.View> implements UserInfoContract.Presenter {
-    UserInfo userInfoModel;
 
-    public UserInfoPresenter(UserInfo userInfo) {
-        this.userInfoModel = userInfo;
+    public UserInfoPresenter() {
     }
 
     @Override
-    public void loadData(String userId) {
+    public void loadData(String userId, final UserInfo userInfoModel) {
         new UserInfoModel().getData(userId, new Observer<ResponseInfo<UserInfo>>() {
             @Override
             public void onSubscribe(Disposable d) {
@@ -42,6 +39,7 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.View> impl
                         //开始渲染界面
                         userInfoModel.setAvatar(userInfo.getAvatar());
                         userInfoModel.setGender(userInfo.getGender());
+                        XLog.d("userInfo.getUserName()----->" + userInfo.getUserName());
                         userInfoModel.setUserName(userInfo.getUserName());
                         userInfoModel.setPhone(userInfo.getPhone());
                         userInfoModel.setUserId(userInfo.getUserId());
@@ -52,7 +50,7 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.View> impl
 
             @Override
             public void onError(Throwable e) {
-                XLog.d("====onError=====",e);
+                XLog.d("====onError=====", e);
             }
 
             @Override
@@ -60,6 +58,16 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.View> impl
 
             }
         });
+    }
+
+    @Override
+    public void share(UserInfo userInfo) {
+
+    }
+
+    @Override
+    public void shortcut(UserInfo userInfo) {
+
     }
     /**
      *

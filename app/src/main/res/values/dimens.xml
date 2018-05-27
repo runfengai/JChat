@@ -10,6 +10,8 @@
     <dimen name="fab_margin">16dp</dimen>
     <!--登录-->
     <dimen name="login_line">16dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
 
 
 </resources>

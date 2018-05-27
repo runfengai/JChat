@@ -14,5 +14,8 @@
     <color name="login_line">#dcdcdc</color>
     <color name="login_line_press">#34abed</color>
     <color name="login_ver_wrong">#4b72a9</color>
+    <!--个人信息-->
+    <color name="user_phone">#757575</color>
+    <color name="user_line">#dbdbdb</color>
 
 </resources>

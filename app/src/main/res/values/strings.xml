@@ -47,5 +47,11 @@
     <string name="action_login_ver">Code</string>
     <string name="action_login_ver_call">We will call you in 1:54</string>
     <string name="action_login_ver_wrong">Wrong number?</string>
+    <!--个人信息-->
+    <string name="user_info_share">Share</string>
+    <string name="user_info_shortcut">Add shortcut</string>
+    <string name="user_info_title">Info</string>
+    <string name="user_info_phone">Phone</string>
+    <string name="user_info_name">Username</string>
 
 </resources>

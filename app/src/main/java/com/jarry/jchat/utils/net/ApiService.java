@@ -64,7 +64,7 @@ public interface ApiService {
      * 登录相关
      * ========================END==================================================================
      */
-    @POST("/user/info")
+    @GET("/user/info")
     Observable<ResponseInfo<UserInfo>> userInfo(@Query("userId") String userId);
 
 }
