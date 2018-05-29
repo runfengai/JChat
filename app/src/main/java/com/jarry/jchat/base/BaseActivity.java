@@ -6,6 +6,7 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 /**
  * Created by Jarry on 2018/3/25.
@@ -85,7 +86,7 @@ public abstract class BaseActivity<DB extends ViewDataBinding, T extends BasePre
 
     @Override
     public void showToast(String msg) {
-
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
     @Override
