@@ -57,6 +57,8 @@ public class UserInfoActivity extends BaseActivity<ActivityUserInfoBinding, User
     protected void loadData() {
         String userId = userInfoModel.getUserId();
         if (!TextUtils.isEmpty(userId)) {
+            //加载进度条
+            showLoading("");
             mPresenter.loadData(userId, userInfoModel);
         }
     }

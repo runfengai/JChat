@@ -53,5 +53,7 @@
     <string name="user_info_title">Info</string>
     <string name="user_info_phone">Phone</string>
     <string name="user_info_name">Username</string>
+    <string name="user_info_take_photo">拍</string>
+    <string name="user_info_chat">聊</string>
 
 </resources>

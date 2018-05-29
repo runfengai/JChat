@@ -29,6 +29,7 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.View> impl
             @Override
             public void onNext(ResponseInfo<UserInfo> userInfoResponseInfo) {
                 XLog.d("====onNext=====");
+
                 if (userInfoResponseInfo == null) {
                     getView().showToast(getView().getContext().getString(R.string.error_server));
                     return;
@@ -50,12 +51,14 @@ public class UserInfoPresenter extends BasePresenter<UserInfoContract.View> impl
 
             @Override
             public void onError(Throwable e) {
+                getView().closeLoading();
                 XLog.d("====onError=====", e);
+                getView().showToast(getView().getContext().getString(R.string.error_server));
             }
 
             @Override
             public void onComplete() {
-
+                getView().closeLoading();
             }
         });
     }

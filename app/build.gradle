@@ -52,4 +52,6 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
 
     compile 'com.google.code.gson:gson:2.8.0'
+//    事件总线
+    compile 'org.greenrobot:eventbus:3.1.1'
 }
