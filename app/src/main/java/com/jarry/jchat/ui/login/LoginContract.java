@@ -1,5 +1,6 @@
 package com.jarry.jchat.ui.login;
 
+import com.jarry.chatsdk.interfaces.ConnectCallBack;
 import com.jarry.jchat.base.BaseModel;
 import com.jarry.jchat.base.BaseView;
 import com.jarry.jchat.model.ResponseInfo;
@@ -19,6 +20,8 @@ public class LoginContract {
 
     interface Model extends BaseModel {
         void login(String loginName, String password, Observer<ResponseInfo<UserInfo>> observer);
+
+        void connect(String loginName, String password, ConnectCallBack connectCallBack);
     }
 
     interface Presenter {

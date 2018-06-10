@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.elvishew.xlog.XLog;
+import com.jarry.chatsdk.interfaces.ConnectCallBack;
 import com.jarry.jchat.R;
 import com.jarry.jchat.base.BasePresenter;
 import com.jarry.jchat.interfaces.LoginSuccessEvent;
@@ -32,6 +33,8 @@ import retrofit2.Response;
  */
 
 public class LoginPresenter extends BasePresenter<LoginContract.View> implements LoginContract.Presenter {
+    UserInfo userInfo;
+
     /**
      *
      */
@@ -52,16 +55,12 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
                     return;
                 }
                 if (responseInfo.isSuccess()) {
+                    //尝试连接openfire服务
                     //登录成功跳转页面
-                    UserInfo userInfo = responseInfo.getData();
+                    userInfo = responseInfo.getData();
                     if (userInfo != null) {//保存到sp中
                         SpUtils.saveString(getView().getContext(), "userInfo", SpUtils.obj2String(userInfo));
-                        Intent intent = new Intent(getView().getContext(), NavigationDrawerActivity.class);
-                        getView().getContext().startActivity(intent);
-                        ((Activity) getView().getContext()).finish();
-                        //事件通知
-                        EventBus.getDefault().post(new LoginSuccessEvent(LoginSuccessEvent.SUCCESS));
-
+                        conn(loginName, password);
                     } else {
                         getView().showToast(getView().getContext().getString(R.string.error_null));
                     }
@@ -83,5 +82,37 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
         });
 
 
+    }
+
+    private void conn(String loginName, String password) {
+        new LoginModel().connect(loginName, password, new ConnectCallBack() {
+            @Override
+            public void onSuccess() {
+                XLog.d("=====onSuccess=====");
+                ((Activity) getView().getContext()).runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(getView().getContext(), NavigationDrawerActivity.class);
+                        getView().getContext().startActivity(intent);
+                        ((Activity) getView().getContext()).finish();
+                        //事件通知
+                        EventBus.getDefault().post(new LoginSuccessEvent(LoginSuccessEvent.SUCCESS));
+                    }
+                });
+
+            }
+
+            @Override
+            public void onFail(int errorCode, String errorStr) {
+                XLog.d("=====errorCode=====" + errorCode + " errorStr=" + errorStr);
+                ((Activity) getView().getContext()).runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        getView().showToast("连接异常：" + errorStr);
+                    }
+                });
+
+            }
+        });
     }
 }
