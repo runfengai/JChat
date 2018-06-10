@@ -7,5 +7,5 @@ package com.jarry.chatsdk.interfaces;
 public interface ConnectCallBack {
     void onSuccess();
 
-    void onFail();
+    void onFail(int errorCode, String errorStr);
 }

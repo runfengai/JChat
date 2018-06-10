@@ -9,9 +9,10 @@ import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 
 public interface XmppConfig {
     //服务端ip+端口
-    String SERVER_IP = "127.0.0.1";
+    String SERVER_IP = "192.168.10.197";
     int SERVER_PORT = 5222;
-    String SERVER_DOMAIN_NAME = "jarry.com";
+    String SERVER_DOMAIN_NAME = "jarry";
+    String SERVER_RESOURCE = "android";
 
 
 }
