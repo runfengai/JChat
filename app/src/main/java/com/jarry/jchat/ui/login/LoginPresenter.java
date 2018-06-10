@@ -40,15 +40,18 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
      */
     @Override
     public void attemptLogin(String loginName, String password) {
+        getView().showLoading("正在登录");
         //获取model
         new LoginModel().login(loginName, password, new Observer<ResponseInfo<UserInfo>>() {
             @Override
             public void onSubscribe(Disposable d) {
+                getView().closeLoading();
                 XLog.d("====onSubscribe=====");
             }
 
             @Override
             public void onNext(ResponseInfo<UserInfo> responseInfo) {
+                getView().closeLoading();
                 XLog.d("====onNext=====");
                 if (responseInfo == null) {
                     getView().showToast(getView().getContext().getString(R.string.error_server));
@@ -71,16 +74,19 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
             @Override
             public void onError(Throwable e) {
+                getView().closeLoading();
                 XLog.d("====onError=====");
 
             }
 
             @Override
             public void onComplete() {
+                getView().closeLoading();
                 XLog.d("====onComplete=====");
             }
         });
-
+        //TODO 暂时直连
+        conn(loginName, password);
 
     }
 
@@ -88,6 +94,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
         new LoginModel().connect(loginName, password, new ConnectCallBack() {
             @Override
             public void onSuccess() {
+                getView().closeLoading();
                 XLog.d("=====onSuccess=====");
                 ((Activity) getView().getContext()).runOnUiThread(new Runnable() {
                     @Override
@@ -104,6 +111,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
             @Override
             public void onFail(int errorCode, String errorStr) {
+                getView().closeLoading();
                 XLog.d("=====errorCode=====" + errorCode + " errorStr=" + errorStr);
                 ((Activity) getView().getContext()).runOnUiThread(new Runnable() {
                     @Override
