@@ -68,6 +68,7 @@ public abstract class BaseActivity<DB extends ViewDataBinding, T extends BasePre
     @Override
     public void showLoading(String msg) {
         if (progressDialog != null) {
+            progressDialog.setMessage(msg);
             progressDialog.show();
         }
     }
