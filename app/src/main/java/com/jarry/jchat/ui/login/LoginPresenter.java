@@ -2,6 +2,7 @@ package com.jarry.jchat.ui.login;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 
 import com.elvishew.xlog.XLog;
@@ -42,49 +43,49 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
     public void attemptLogin(String loginName, String password) {
         getView().showLoading("正在登录");
         //获取model
-        new LoginModel().login(loginName, password, new Observer<ResponseInfo<UserInfo>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                getView().closeLoading();
-                XLog.d("====onSubscribe=====");
-            }
-
-            @Override
-            public void onNext(ResponseInfo<UserInfo> responseInfo) {
-                getView().closeLoading();
-                XLog.d("====onNext=====");
-                if (responseInfo == null) {
-                    getView().showToast(getView().getContext().getString(R.string.error_server));
-                    return;
-                }
-                if (responseInfo.isSuccess()) {
-                    //尝试连接openfire服务
-                    //登录成功跳转页面
-                    userInfo = responseInfo.getData();
-                    if (userInfo != null) {//保存到sp中
-                        SpUtils.saveString(getView().getContext(), "userInfo", SpUtils.obj2String(userInfo));
-                        conn(loginName, password);
-                    } else {
-                        getView().showToast(getView().getContext().getString(R.string.error_null));
-                    }
-                } else {
-                    getView().showToast(responseInfo.getMsg());
-                }
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                getView().closeLoading();
-                XLog.d("====onError=====");
-
-            }
-
-            @Override
-            public void onComplete() {
-                getView().closeLoading();
-                XLog.d("====onComplete=====");
-            }
-        });
+//        new LoginModel().login(loginName, password, new Observer<ResponseInfo<UserInfo>>() {
+//            @Override
+//            public void onSubscribe(Disposable d) {
+//                getView().closeLoading();
+//                XLog.d("====onSubscribe=====");
+//            }
+//
+//            @Override
+//            public void onNext(ResponseInfo<UserInfo> responseInfo) {
+//                getView().closeLoading();
+//                XLog.d("====onNext=====");
+//                if (responseInfo == null) {
+//                    getView().showToast(getView().getContext().getString(R.string.error_server));
+//                    return;
+//                }
+//                if (responseInfo.isSuccess()) {
+//                    //尝试连接openfire服务
+//                    //登录成功跳转页面
+//                    userInfo = responseInfo.getData();
+//                    if (userInfo != null) {//保存到sp中
+//                        SpUtils.saveString(getView().getContext(), "userInfo", SpUtils.obj2String(userInfo));
+//                        conn(loginName, password);
+//                    } else {
+//                        getView().showToast(getView().getContext().getString(R.string.error_null));
+//                    }
+//                } else {
+//                    getView().showToast(responseInfo.getMsg());
+//                }
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                getView().closeLoading();
+//                XLog.d("====onError=====");
+//
+//            }
+//
+//            @Override
+//            public void onComplete() {
+//                getView().closeLoading();
+//                XLog.d("====onComplete=====");
+//            }
+//        });
         //TODO 暂时直连
         conn(loginName, password);
 
@@ -94,18 +95,16 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
         new LoginModel().connect(loginName, password, new ConnectCallBack() {
             @Override
             public void onSuccess() {
-                getView().closeLoading();
-                XLog.d("=====onSuccess=====");
-                ((Activity) getView().getContext()).runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(getView().getContext(), NavigationDrawerActivity.class);
-                        getView().getContext().startActivity(intent);
-                        ((Activity) getView().getContext()).finish();
-                        //事件通知
-                        EventBus.getDefault().post(new LoginSuccessEvent(LoginSuccessEvent.SUCCESS));
-                    }
+                ((Activity) getView().getContext()).runOnUiThread(() -> {
+                    getView().closeLoading();
+                    XLog.d("=====onSuccess=====");
+                    Intent intent = new Intent(getView().getContext(), NavigationDrawerActivity.class);
+                    getView().getContext().startActivity(intent);
+                    ((Activity) getView().getContext()).finish();
+                    //事件通知
+                    EventBus.getDefault().post(new LoginSuccessEvent(LoginSuccessEvent.SUCCESS));
                 });
+
 
             }
 
@@ -113,12 +112,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
             public void onFail(int errorCode, String errorStr) {
                 getView().closeLoading();
                 XLog.d("=====errorCode=====" + errorCode + " errorStr=" + errorStr);
-                ((Activity) getView().getContext()).runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        getView().showToast("连接异常：" + errorStr);
-                    }
-                });
+                ((Activity) getView().getContext()).runOnUiThread(() -> getView().showToast("连接异常：" + errorStr));
 
             }
         });
