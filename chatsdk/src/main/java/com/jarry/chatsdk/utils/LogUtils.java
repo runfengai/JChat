@@ -23,7 +23,7 @@ public class LogUtils {
     public static String customTagPrefix = "chatSDK"; // 自定义Tag的前缀
     private static final boolean isSaveLog = false; // 是否把保存日志到SD卡中
     public static final String ROOT = Environment.getExternalStorageDirectory()
-            .getPath() + File.separator + "ftxSDK" + File.separator; // SD卡中的根目录
+            .getPath() + File.separator + "jarrySDK" + File.separator; // SD卡中的根目录
     private static final String PATH_LOG_INFO = ROOT + "log/";
 
     private LogUtils() {
@@ -141,6 +141,7 @@ public class LogUtils {
             point(PATH_LOG_INFO, tag, tr.getMessage());
         }
     }
+
     public static void d(String tag, String content) {
         if (!allowD)
             return;
@@ -155,6 +156,7 @@ public class LogUtils {
             point(PATH_LOG_INFO, tag, content);
         }
     }
+
     public static void i(String content) {
         if (!allowI)
             return;

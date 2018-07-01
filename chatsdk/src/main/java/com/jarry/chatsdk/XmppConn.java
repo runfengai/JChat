@@ -78,7 +78,14 @@ public class XmppConn {
         //连接成功
         connectCallBack.onSuccess();
         setListeners();
+        startService();
+    }
 
+    /**
+     * 守护线程
+     */
+    private void startService() {
+        
     }
 
     private void setListeners() {
